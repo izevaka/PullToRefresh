@@ -28,9 +28,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#define REFRESH_HEADER_HEIGHT 52.0f
 
-
-@interface PullRefreshTableViewController : UITableViewController {
+@interface PullRefreshTableViewController : UIViewController {
     UIView *refreshHeaderView;
     UILabel *refreshLabel;
     UIImageView *refreshArrow;
@@ -46,6 +46,7 @@
 @property (nonatomic, retain) UILabel *refreshLabel;
 @property (nonatomic, retain) UIImageView *refreshArrow;
 @property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
+@property (nonatomic, assign, readonly) UIScrollView *tableView;
 @property (nonatomic, copy) NSString *textPull;
 @property (nonatomic, copy) NSString *textRelease;
 @property (nonatomic, copy) NSString *textLoading;

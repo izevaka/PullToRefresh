@@ -30,19 +30,14 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PullRefreshTableViewController.h"
 
-#define REFRESH_HEADER_HEIGHT 52.0f
-
 
 @implementation PullRefreshTableViewController
 
 @synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
 
-- (id)initWithStyle:(UITableViewStyle)style {
-  self = [super initWithStyle:style];
-  if (self != nil) {
-    [self setupStrings];
-  }
-  return self;
+- (UIScrollView*) tableView
+{
+    return (UIScrollView*)self.view;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -61,10 +56,6 @@
   return self;
 }
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  [self addPullToRefreshHeader];
-}
 
 - (void)setupStrings{
   textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
@@ -80,6 +71,7 @@
     refreshLabel.backgroundColor = [UIColor clearColor];
     refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
     refreshLabel.textAlignment = UITextAlignmentCenter;
+    refreshLabel.textColor = [UIColor grayColor];
 
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
     refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
